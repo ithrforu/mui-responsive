@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react';
+import { Box, Container, Stack } from '@mui/material';
+import { ThemeProvider } from 'theme/ThemeProvider';
+import { Feed, Navbar, Rightbar, Sidebar } from './components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App: FC = () => (
+  <ThemeProvider>
+    <Box bgcolor="background.default" color="text.primary">
+      <Container sx={{ p: (theme) => theme.spacing(0, 2) }}>
+        <Navbar />
+        <Stack direction="row" spacing={2}>
+          <Sidebar />
+          <Feed />
+          <Rightbar />
+        </Stack>
+      </Container>
+    </Box>
+  </ThemeProvider>
+);
 
 export default App;
